@@ -5,6 +5,9 @@
   "repository": "git@github.com:IlgssonBraga/solid-api.git",
   "author": "Ilgsson Braga <ilgssonbraga@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "tsnd --transpile-only --respawn --ignore-watch node_modules src/server.ts"
+  },
   "dependencies": {
     "express": "^4.17.1"
   },
