@@ -1,0 +1,15 @@
+{
+  "name": "solid-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:IlgssonBraga/solid-api.git",
+  "author": "Ilgsson Braga <ilgssonbraga@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.56",
+    "typescript": "^3.9.7"
+  }
+}
