@@ -1,9 +1,13 @@
 import { IUsersRepository } from '../../repositories/IUsersRepository';
 import { ICreateUserRequestDTO } from './CreateUserDTO';
 import { User } from '../../entities/User';
+import { IMailProvider } from '../../providers/IMailProvider';
 
 export class CreateUserUseCase {
-  constructor(private usersRepository: IUsersRepository) {}
+  constructor(
+    private usersRepository: IUsersRepository,
+    private mailProvider: IMailProvider,
+  ) {}
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   async execute(data: ICreateUserRequestDTO) {
@@ -18,5 +22,18 @@ export class CreateUserUseCase {
     const user = new User(data);
 
     await this.usersRepository.save(user);
+
+    this.mailProvider.sendMail({
+      to: {
+        name: data.name,
+        email: data.email,
+      },
+      from: {
+        name: 'Ilgsson Braga',
+        email: 'ilgssonbraga@gmail.com',
+      },
+      subject: 'Seja bem vindo à plataforma!',
+      body: '<p>Você já pode fazer login em nossa plataforma.</p>',
+    });
   }
 }
